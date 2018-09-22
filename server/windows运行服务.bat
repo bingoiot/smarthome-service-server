@@ -1,0 +1,2 @@
+dotnet jifanserver.dll
+pause

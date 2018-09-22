@@ -1,0 +1,9 @@
+mysql:
+
+创建数据库jifan_consumer_db
+执行脚本 jifan_consumer_db(mysql).sql 创建表格
+
+
+posgresql:
+创建数据库jifan_consumer_db
+执行脚本 jifan_consumer_db(pgsql).sql 创建表格

@@ -12,7 +12,7 @@
 + 缓存:redis(3.0+)
 + 数据库：mysql或postgresql
 + (windows系统需要安装VB/VC运行库)
-s
+
 **注意事项：**
 1. 同一局域内网，须要确保至少有一个udp服务以上的，用于跨网通信。
 2. windows系统需安装vc运行库
@@ -50,36 +50,36 @@ cmd 定位到程序放置的文件夹 执行``` dotnet jifanserver.dll```
 五、windows环境搭建
 ---
 
-###5.1安装.net core  2.1.x版本###
+**5.1安装.net core  2.1.x版本**
 
 第一步：进入微软官网下载页 https://www.microsoft.com/net/download
 下载.net core sdk 安装默认即可。
  
   ![netcore下载](https://raw.githubusercontent.com/ludycool/openfile/master/jifan_server/.netcored.png) 
 
-###5.2安装  微软VB/VC运行库合集(Microsoft VB/VC Runtime Library)###
+**5.2安装  微软VB/VC运行库合集(Microsoft VB/VC Runtime Library)**
 下载：http://down7.pc6.com/xy3/VBVCRedist.zip
 或者https://raw.githubusercontent.com/bingoiot/jifan_tool/master/VBVCRedist/VBVCRedist_x64.exe
 *安装时，功能全选即可*
 
 
-###5.3安装 redis 3.0###
+**5.3安装 redis 3.0**
 下载连接：https://raw.githubusercontent.com/bingoiot/jifan_tool/master/redis/Redis-x64-3.2.100.msi
 下载安装即可
 附：Windows 安装redis  修改密码等操作：http://www.cnblogs.com/jaign/articles/7920588.html
 注意事项：
 *配置文件里，配置密码   requirepass  xxxx 时，requirepass这面不能有空格。这是个坑。*
 
-###5.4安装 mysql或者postgresql###
+**5.4安装 mysql或者postgresql**
 5.4.1、 windows安装mysql博客：
 https://blog.csdn.net/wdx1121/article/details/79523254
 或
 https://www.cnblogs.com/xsmile/p/7753984.html
 需要配置密码
-###5.4.2、 Windows 安装postgresql 博客###
+**5.4.2、 Windows 安装postgresql 博客**
 https://www.cnblogs.com/2dogslife/p/8414764.html
 
-###5.5使用nssm安装进程守护###
+**5.5使用nssm安装进程守护**
 如有需要，可以把程序注册 成服务，开机能自动起动。
 附nssm 把程序安装成服务
 https://www.cnblogs.com/emrys5/p/nssm-netcore.html
@@ -87,25 +87,25 @@ https://www.cnblogs.com/emrys5/p/nssm-netcore.html
 ---
 六、Linux环境搭建
 ---
-###6.1安装.net core  2.1.x版本###
+**6.1安装.net core  2.1.x版本**
 参照微软官网：https://www.microsoft.com/net/learn/get-started-with-dotnet-tutorial#install
  
   ![netcore下载](https://raw.githubusercontent.com/ludycool/openfile/master/jifan_server/.netcored2.png) 
 
 先择系统后，根据提示，使用命令安装
 
-###6.2安装 redis 3.0###
+**6.2安装 redis 3.0**
 如何在Ubuntu 16.04上安装并配置Redis:
 https://blog.csdn.net/zstack_org/article/details/69951845
 Centos 安装redis
 https://www.cnblogs.com/renzhicai/p/7773080.html
-###6.3、安装 mysql或者postgresql###
+**6.3、安装 mysql或者postgresql**
 Centos 下安装mysql:
 https://www.cnblogs.com/silentdoer/articles/7258232.html
 ubuntu 安装mysql:
 https://blog.csdn.net/itxiaolong3/article/details/77905923
 
-###6.4、使用系统服务或者supervisor 创建进程守护###
+**6.4、使用系统服务或者supervisor 创建进程守护**
 6.4.1、Linux下为使用supervisor为 dotnet 创建守护进程:
 https://www.cnblogs.com/savorboard/p/dotnetcore-supervisor.html
 6.4.2 创建系统服役。做进程守护：
@@ -136,7 +136,6 @@ WantedBy=multi-user.target
 
 开启该服务，并确认它正在运行
 ```systemctl start jifan-server.service systemctl status jifan-server.service```
-
 
 
 

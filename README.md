@@ -33,7 +33,9 @@
 2本地建文件夹jifan/config    (jifan这个目录名称可随意定义)
 3新建配置文件appsettings.json 放在 jifan/config 的目录中，
 把注册申请的服务器ip,sn填上，数据库，缓存等配置好即可。
+
 **文件内容如下：**
+
 ```
  {
   "mydb": { //数据库连接
@@ -69,10 +71,13 @@
 ```
 appsettings.json 配置文件 例子下载：
 https://raw.githubusercontent.com/bingoiot/jifan_server/master/server/config/appsettings.json
+
 4下载镜像
+
 ```docker pull bingoiot/jifanserver```
 
 5运行容器
+
 ```docker run --restart unless-stopped --name myjifan -d -p 16729:16729 -p 16739:16739  -v /jifan/logfile:/myapp/logfile -v /jifan/config:/myapp/config  jifanserver:latest```
 
 **注：**
@@ -84,18 +89,31 @@ https://raw.githubusercontent.com/bingoiot/jifan_server/master/server/config/app
 四、Linux环境运行环境搭建引导
 ---
 **4.1 安装docker**
+
 参考：http://www.runoob.com/docker/centos-docker-install.html
+
 **4.2 docker部署redis,mongodb,mysql、nginx常用环境**
+
 参考：http://www.runoob.com/docker/centos-docker-install.html
+
 **4.3安装 redis 3.0**
+
 如何在Ubuntu 16.04上安装并配置Redis:
+
 https://blog.csdn.net/zstack_org/article/details/69951845
+
 Centos 安装redis
+
 https://www.cnblogs.com/renzhicai/p/7773080.html
+
 **4.4、安装 mysql或者postgresql**
+
 Centos 下安装mysql:
+
 https://www.cnblogs.com/silentdoer/articles/7258232.html
+
 ubuntu 安装mysql:
+
 https://blog.csdn.net/itxiaolong3/article/details/77905923
 
 ---
@@ -105,17 +123,21 @@ https://blog.csdn.net/itxiaolong3/article/details/77905923
 **5.1安装.net core  2.1.x版本**
 
 第一步：进入微软官网下载页 https://www.microsoft.com/net/download
+
 下载.net core sdk 安装默认即可。
  
   ![netcore下载](https://raw.githubusercontent.com/ludycool/openfile/master/jifan_server/.netcored.png) 
 
 **5.2安装  微软VB/VC运行库合集(Microsoft VB/VC Runtime Library)**
+
 下载：http://down7.pc6.com/xy3/VBVCRedist.zip
 或者https://raw.githubusercontent.com/bingoiot/jifan_tool/master/VBVCRedist/VBVCRedist_x64.exe
+
 *安装时，功能全选即可*
 
 
 **5.3安装 redis 3.0**
+
 下载连接：https://raw.githubusercontent.com/bingoiot/jifan_tool/master/redis/Redis-x64-3.2.100.msi
 下载安装即可
 附：Windows 安装redis  修改密码等操作：http://www.cnblogs.com/jaign/articles/7920588.html
@@ -123,18 +145,23 @@ https://blog.csdn.net/itxiaolong3/article/details/77905923
 *配置文件里，配置密码   requirepass  xxxx 时，requirepass这面不能有空格。这是个坑。*
 
 **5.4安装 mysql或者postgresql**
+
 5.4.1、 windows安装mysql博客：
+
 https://blog.csdn.net/wdx1121/article/details/79523254
 或
 https://www.cnblogs.com/xsmile/p/7753984.html
 需要配置密码
 **5.4.2、 Windows 安装postgresql**
+
 https://www.cnblogs.com/2dogslife/p/8414764.html
 
 **5.5下载程序**
+
 Git地址：https://github.com/bingoiot/jifan_server.git
 
 **5.6运行服务**
+
 1.安装好环境，下载得到程序。更改配置文件appsettings.json里参数
 2.把注册申请的服务器ip,sn填上，数据库，缓存等配置好即可。
 3.使用cmd cd定位到程序放置的文件夹 执行``` dotnet jifanserver.dll```
@@ -142,6 +169,7 @@ Git地址：https://github.com/bingoiot/jifan_server.git
  ![windows 运行](https://raw.githubusercontent.com/ludycool/openfile/master/jifan_server/runcmd.png)
 
 **5.5使用nssm安装进程守护**
+
 如有需要，可以把程序注册 成服务，开机能自动起动。
 附nssm 把程序安装成服务
 https://www.cnblogs.com/emrys5/p/nssm-netcore.html

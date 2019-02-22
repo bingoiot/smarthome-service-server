@@ -78,7 +78,7 @@ https://raw.githubusercontent.com/bingoiot/jifan_server/master/server/config/app
 
 5运行容器
 
-```docker run --restart unless-stopped --name myjifan -d -p 16729:16729 -p 16739:16739  -v /jifan/logfile:/myapp/logfile -v /jifan/config:/myapp/config  jifanserver:latest```
+```docker run --restart unless-stopped --name myjifan -d -p 16729:16729 -p 16739:16739  -v /jifan/logfile:/myapp/logfile -v /jifan/config:/myapp/config  bingoiot/jifanserver:latest```
 
 **注：**
 *-v /jifan/logfile:/myapp/logfile 

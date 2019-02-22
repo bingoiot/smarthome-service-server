@@ -80,6 +80,9 @@ https://raw.githubusercontent.com/bingoiot/jifan_server/master/server/config/app
 
 ```docker run --restart unless-stopped --name myjifan -d -p 16729:16729 -p 16739:16739  -v /jifan/logfile:/myapp/logfile -v /jifan/config:/myapp/config  bingoiot/jifanserver:latest```
 
+
+在浏览器输入 ```：http://你的ip:16739/server/details ``` 查看服务运行状态
+
 **注：**
 *-v /jifan/logfile:/myapp/logfile 
 -v /jifan/config:/myapp/config  :目录挂载、映射，把日志，配置文件挂载到docker中

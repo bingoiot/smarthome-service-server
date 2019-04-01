@@ -97,7 +97,7 @@ https://raw.githubusercontent.com/bingoiot/jifan_server/master/server/config/app
 
 **4.2 docker部署redis,mongodb,mysql、nginx常用环境**
 
-参考：http://www.runoob.com/docker/centos-docker-install.html
+参考：https://www.cnblogs.com/lucoo/p/10172515.html
 
 **4.3安装 redis 3.0**
 

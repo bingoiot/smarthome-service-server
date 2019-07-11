@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "5af70880c361df1ecf1313f2f074a34d2d2bc01e"
+    "signature": "dbe70aa8223bd5ee99ba07c963c3677b5c6a44fb"
   },
   "compilationOptions": {},
   "targets": {
@@ -470,6 +470,14 @@
             "rid": "win-x86",
             "assetType": "native",
             "fileVersion": "4.6.25512.1"
+          }
+        }
+      },
+      "SafeObjectPool/2.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/SafeObjectPool.dll": {
+            "assemblyVersion": "2.0.3.0",
+            "fileVersion": "2.0.3.0"
           }
         }
       },
@@ -1636,6 +1644,7 @@
       "CSRedisCore/2.3.9": {
         "dependencies": {
           "Newtonsoft.Json": "11.0.2",
+          "SafeObjectPool": "2.0.3",
           "Standard.Common": "1.0.0"
         },
         "runtime": {
@@ -1651,11 +1660,22 @@
           "jifan.Common.dll": {}
         }
       },
+      "jifan.Consumer/1.0.0": {
+        "dependencies": {
+          "PostgresqlServer": "1.0.0",
+          "jifan.Common": "1.0.0"
+        },
+        "runtime": {
+          "jifan.Consumer.dll": {}
+        }
+      },
       "jifan.ServerCenter/1.0.0": {
         "dependencies": {
           "CSRedisCore": "2.3.9",
+          "NettyServer": "1.0.0",
           "Standard.Common": "1.0.0",
-          "jifan.Common": "1.0.0"
+          "jifan.Common": "1.0.0",
+          "jifan.Consumer": "1.0.0"
         },
         "runtime": {
           "jifan.ServerCenter.dll": {}
@@ -2005,6 +2025,13 @@
       "sha512": "sha512-YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
+    },
+    "SafeObjectPool/2.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VGJ3/XjqD774+k2nCpdSdMlAyXU2iGlhwGnswgXhb9qHzzoyE9MsNoclI4+mTtpeKxdIjykEsBs1ulteF5tCWA==",
+      "path": "safeobjectpool/2.0.3",
+      "hashPath": "safeobjectpool.2.0.3.nupkg.sha512"
     },
     "System.AppContext/4.1.0": {
       "type": "package",
@@ -2635,6 +2662,11 @@
       "sha512": ""
     },
     "jifan.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "jifan.Consumer/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

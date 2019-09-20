@@ -1,379 +1,491 @@
-
-/*==============================================================*/
-/* Table: app_user                                              */
-/*==============================================================*/
-create table app_user (
-   id                   VARCHAR(38)          not null,
-   weixinid             VARCHAR(50)          null,
-   loginname            VARCHAR(20)          null,
-   password             VARCHAR(32)          null,
-   imgeurl              VARCHAR(254)         null,
-   nickname             VARCHAR(30)          null,
-   truename             VARCHAR(20)          null,
-   phone                VARCHAR(20)          null,
-   sex                  VARCHAR(10)          null,
-   states               VARCHAR(20)          null,
-   isonline             BOOL                 null,
-   createtime           TIMESTAMP            null,
-   constraint PK_APP_USER primary key (id)
-);
-
-comment on table app_user is
-'app_user  ¿Í»§¶ËÓÃ»§';
-
-comment on column app_user.id is
-'Ö÷¼ü';
-
-comment on column app_user.weixinid is
-'Î¢ĞÅopenid';
-
-comment on column app_user.loginname is
-'µÇÂ¼Ãû';
-
-comment on column app_user.password is
-'ÃÜÂë';
-
-comment on column app_user.imgeurl is
-'Í·ÏñÍ¼Æ¬';
-
-comment on column app_user.nickname is
-'êÇ³Æ';
-
-comment on column app_user.truename is
-'ĞÕÃû';
-
-comment on column app_user.phone is
-'µç»°';
-
-comment on column app_user.sex is
-'ĞÔ±ğ';
-
-comment on column app_user.states is
-'×´Ì¬£¨Ëø¶¨ Õı³£ ¹Ø±Õ£©';
-
-comment on column app_user.isonline is
-'×´Ì¬£¨1ÔÚÏß 0 ÏÂÏß £©';
-
-comment on column app_user.createtime is
-'Ìí¼ÓÊ±¼ä';
-
-/*==============================================================*/
-/* Table: area                                                  */
-/*==============================================================*/
-create table area (
-   id                   SERIAL               not null,
-   describe             VARCHAR(32)          null,
-   createtime           TIMESTAMP            null,
-   creator_id           VARCHAR(36)          null,
-   mac                  VARCHAR(36)          null,
-   constraint PK_AREA primary key (id)
-);
-
-comment on table area is
-'area  µØÇø£¨¼Ò£©';
-
-comment on column area.id is
-'Ö÷¼ü';
-
-comment on column area.describe is
-'ÃèÊö';
-
-comment on column area.createtime is
-'Ìí¼ÓÊ±¼ä';
-
-comment on column area.creator_id is
-'´´¼üÕßid';
-
-comment on column area.mac is
-'wifimacµØÖ·';
-
-/*==============================================================*/
-/* Table: device                                                */
-/*==============================================================*/
-create table device (
-   mac                  VARCHAR(36)          not null,
-   chipid               VARCHAR(36)          null,
-   sn                   VARCHAR(36)          null,
-   createtime           TIMESTAMP            null,
-   servercode           INT4                 null,
-   isonline             INT2                 null,
-   online_time          TIMESTAMP            null,
-  constraint PK_DEVICE_INFO primary key (mac)
-);
-
-comment on table device is
-'device Éè±¸';
-
-comment on column device.mac is
-'macµØÖ·(Ö÷½¡)';
-
-comment on column device.chipid is
-'Ğ¾Æ¬id';
-
-comment on column device.sn is
-'snºÅÂë';
-
-comment on column device.createtime is
-'Ìí¼ÓÊ±¼ä';
-
-comment on column device.servercode is
-'·şÎñÆ÷±àºÅ';
-
-comment on column device.isonline is
-'ÊÇ·ñÔÚÏß(1ÔÚÏß 0²»ÔÚÏß)';
-
-comment on column device.online_time is
-'×îºóÔÚÏßÊ±¼ä';
-
-/*==============================================================*/
-/* Table: device_attention                                      */
-/*==============================================================*/
-create table device_attention (
-   id                   SERIAL               not null,
-   mac                  VARCHAR(36)          null,
-   userid               VARCHAR(38)          null,
-   area_id              INT4                 null,
-   createtime           TIMESTAMP            null,
-   keyid                INT4                 null,
-   key                  VARCHAR(36)          null,
-   from_uid             VARCHAR(38)          null,
-   constraint PK_DEVICE_ATTENTION primary key (id)
-);
-
-comment on table device_attention is
-'device_attention ÓÃ»§ºÍÉè±¸¹Ø×¢¹ØÁª£¨¶à¶Ô¶à£©';
-
-comment on column device_attention.id is
-'Ö÷¼ü';
-
-comment on column device_attention.mac is
-'macµØÖ·';
-
-comment on column device_attention.userid is
-'ÓÃ»§id';
-
-comment on column device_attention.area_id is
-'(´óÇø)¼Òid';
-
-comment on column device_attention.createtime is
-'Ìí¼ÓÊ±¼ä';
-
-comment on column device_attention.keyid is
-'keyid';
-
-comment on column device_attention.key is
-'key';
-
-comment on column device_attention.from_uid is
-'·ÖÏíÕßid';
-
-/*==============================================================*/
-/* Table: device_info                                           */
-/*==============================================================*/
-create table device_info (
-   mac                  VARCHAR(36)          not null,
-   name                 VARCHAR(32)          null,
-   guest_key            VARCHAR(36)          null,
-   com_key              VARCHAR(36)          null,
-   ad_key               VARCHAR(36)          null,
-   createtime           TIMESTAMP            null,
-   wifimac              VARCHAR(36)          null,
-   aids                 VARCHAR(254)         null,
-   constraint PK_DEVICE_INFO primary key (mac)
-);
-
-comment on table device_info is
-'device_info Éè±¸ÏêÇé';
-
-comment on column device_info.mac is
-'macµØÖ·(Ö÷½¡)';
-
-comment on column device_info.name is
-'Ãû³Æ';
-
-comment on column device_info.guest_key is
-'ÌåÑéÃÜÂë';
-
-comment on column device_info.com_key is
-'Ò»°ãÃÜÂë';
-
-comment on column device_info.ad_key is
-'¹ÜÀíÔ±ÃÜÂë';
-
-comment on column device_info.createtime is
-'Ìí¼ÓÊ±¼ä';
-
-comment on column device_info.aids is
-'Éè±¸ÊôĞÔAID(¶à¸ö, ºÅ¸ô¿ª )';
-
-/*==============================================================*/
-/* Table: device_port                                           */
-/*==============================================================*/
-create table device_port (
-   id                   SERIAL               not null,
-   mac                  VARCHAR(36)          null,
-   port                 INT4                 null,
-   portname             VARCHAR(32)          null,
-   aids                 VARCHAR(254)         null,
-   aid_dev_type         INT4                 null,
-   dev_modelid          INT4                 null,
-   constraint PK_DEVICE_PORT primary key (id)
-);
-
-comment on table device_port is
-'device_port( ¶Ë¿ÚÉè±¸)';
-
-comment on column device_port.id is
-'Ö÷¼ü';
-
-comment on column device_port.mac is
-'Éè±¸id';
-
-comment on column device_port.port is
-'¶Ë¿Ú';
-
-comment on column device_port.portname is
-'Ãû³Æ';
-
-comment on column device_port.aids is
-'AID(¶à¸ö, ºÅ¸ô¿ª )';
-
-comment on column device_port.aid_dev_type is
-'Éè±¸ÀàĞÍ';
-
-comment on column device_port.dev_modelid is
-'ĞÍºÅid';
-
-/*==============================================================*/
-/* Table: device_port_attention                                 */
-/*==============================================================*/
-create table device_port_attention (
-   id                   SERIAL               not null,
-   mac                  VARCHAR(36)          null,
-   device_port_id       INT8                 null,
-   device_attention_id  INT8                 null,
-   userid               VARCHAR(38)          null,
-   portname             VARCHAR(32)          null,
-   createtime           TIMESTAMP            null,
-   region_id            INT4                 null,
-   constraint PK_DEVICE_PORT_ATTENTION primary key (id)
-);
-
-comment on table device_port_attention is
-'device_port_attention ÓÃ»§ºÍ¶Ë¿ÚÉè±¸¹ØÁª£¨¶à¶Ô¶à£©';
-
-comment on column device_port_attention.id is
-'Ö÷¼ü';
-
-comment on column device_port_attention.mac is
-'Éè±¸id';
-
-comment on column device_port_attention.device_port_id is
-'¶Ë¿Úid';
-
-comment on column device_port_attention.device_attention_id is
-'°ó¶¨¹ØÁªid';
-
-comment on column device_port_attention.userid is
-'ÓÃ»§id';
-
-comment on column device_port_attention.portname is
-'Ãû³Æ';
-
-comment on column device_port_attention.createtime is
-'Ìí¼ÓÊ±¼ä';
-
-comment on column device_port_attention.region_id is
-'ÇøÓòid';
-
-/*==============================================================*/
-/* Table: region                                                */
-/*==============================================================*/
-create table region (
-   id                   SERIAL               not null,
-   describe             VARCHAR(32)          null,
-   area_id              INT4                 null,
-   createtime           TIMESTAMP            null,
-   creator_id           VARCHAR(36)          null,
-   constraint PK_REGION primary key (id)
-);
-
-comment on table region is
-'region ÇøÓò£¨·¿¼ä£©';
-
-comment on column region.id is
-'Ö÷¼ü';
-
-comment on column region.describe is
-'ÃèÊö';
-
-comment on column region.area_id is
-'(´óÇø)¼Òid';
-
-comment on column region.createtime is
-'Ìí¼ÓÊ±¼ä';
-
-comment on column region.creator_id is
-'´´¼üÕßid';
-
-/*==============================================================*/
-/* Table: scene                                                 */
-/*==============================================================*/
-create table scene (
-   id                   VARCHAR(38)          not null,
-   describe             VARCHAR(40)          null,
-   mac                  VARCHAR(36)          null,
-   store_mac            VARCHAR(500)         null,
-   area_id              INT4                 null,
-   data                 TEXT                 null,
-   file_name            VARCHAR(254)         null,
-   filedata             TEXT                 null,
-   status               INT4                 null,
-   creator_id           VARCHAR(38)          null,
-   userid_set           VARCHAR(500)         null,
-   createtime           TIMESTAMP            null,
-   typeid               INT4                 null,
-   constraint PK_SCENE primary key (id)
-);
-
-comment on table scene is
-'Çé¾°£¨±à³Ì£©';
-
-comment on column scene.id is
-'Ö÷¼ü';
-
-comment on column scene.describe is
-'ÃèÊöÃû³Æ';
-
-comment on column scene.mac is
-'Ö÷´¢´æµÄÉè±¸ macµØÖ·';
-
-comment on column scene.store_mac is
-'´¢´æµÄÉè±¸µØÖ·';
-
-comment on column scene.area_id is
-'¼Òid';
-
-comment on column scene.data is
-'Êı¾İ×éºÏ';
-
-comment on column scene.file_name is
-'ÎÄ¼şÃû³Æ';
-
-comment on column scene.filedata is
-'Éú³ÉµÄÎÄ¼şÊı¾İ';
-
-comment on column scene.status is
-'×´Ì¬';
-
-comment on column scene.creator_id is
-'´´¼üÕßid';
-
-comment on column scene.userid_set is
-'(ÓĞÈ¨ÏŞµÄÓÃ»§id ¶ººÅ¸ô¿ª)';
-
-comment on column scene.createtime is
-'Ìí¼ÓÊ±¼ä';
-
-comment on column scene.typeid is
-'ÀàĞÍ£¨µ¥Áª¡¢¶àÁª¡¢¶¨Ê±£¬Çø¼ä¶¨Ê±£©';
+/*
+Navicat PGSQL Data Transfer
+
+Source Server         : myserver
+Source Server Version : 90602
+Source Host           : 119.23.219.167:40010
+Source Database       : jifan_consumer_db
+Source Schema         : public
+
+Target Server Type    : PGSQL
+Target Server Version : 90602
+File Encoding         : 65001
+
+Date: 2019-04-25 13:50:27
+*/
+
+
+-- ----------------------------
+-- Sequence structure for area_id_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "public"."area_id_seq";
+CREATE SEQUENCE "public"."area_id_seq"
+ INCREMENT 1
+ MINVALUE 1
+ MAXVALUE 9223372036854775807
+ START 10
+ CACHE 1;
+SELECT setval('"public"."area_id_seq"', 10, true);
+
+-- ----------------------------
+-- Sequence structure for device_attention_id_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "public"."device_attention_id_seq";
+CREATE SEQUENCE "public"."device_attention_id_seq"
+ INCREMENT 1
+ MINVALUE 1
+ MAXVALUE 9223372036854775807
+ START 335
+ CACHE 1;
+SELECT setval('"public"."device_attention_id_seq"', 335, true);
+
+-- ----------------------------
+-- Sequence structure for device_port_attention_id_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "public"."device_port_attention_id_seq";
+CREATE SEQUENCE "public"."device_port_attention_id_seq"
+ INCREMENT 1
+ MINVALUE 1
+ MAXVALUE 9223372036854775807
+ START 1215
+ CACHE 1;
+SELECT setval('"public"."device_port_attention_id_seq"', 1215, true);
+
+-- ----------------------------
+-- Sequence structure for device_port_id_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "public"."device_port_id_seq";
+CREATE SEQUENCE "public"."device_port_id_seq"
+ INCREMENT 1
+ MINVALUE 1
+ MAXVALUE 9223372036854775807
+ START 1001
+ CACHE 1;
+SELECT setval('"public"."device_port_id_seq"', 1001, true);
+
+-- ----------------------------
+-- Sequence structure for region_id_seq
+-- ----------------------------
+DROP SEQUENCE IF EXISTS "public"."region_id_seq";
+CREATE SEQUENCE "public"."region_id_seq"
+ INCREMENT 1
+ MINVALUE 1
+ MAXVALUE 9223372036854775807
+ START 10
+ CACHE 1;
+SELECT setval('"public"."region_id_seq"', 10, true);
+
+-- ----------------------------
+-- Table structure for app_user
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."app_user";
+CREATE TABLE "public"."app_user" (
+"id" varchar(38) COLLATE "default" NOT NULL,
+"weixinid" varchar(50) COLLATE "default",
+"loginname" varchar(20) COLLATE "default",
+"password" varchar(32) COLLATE "default",
+"imgeurl" varchar(254) COLLATE "default",
+"nickname" varchar(30) COLLATE "default",
+"truename" varchar(20) COLLATE "default",
+"phone" varchar(20) COLLATE "default",
+"sex" varchar(10) COLLATE "default",
+"states" varchar(20) COLLATE "default",
+"isonline" bool,
+"createtime" timestamp(6)
+)
+WITH (OIDS=FALSE)
+
+;
+COMMENT ON TABLE "public"."app_user" IS 'app_user  å®¢æˆ·ç«¯ç”¨æˆ·';
+COMMENT ON COLUMN "public"."app_user"."id" IS 'ä¸»é”®';
+COMMENT ON COLUMN "public"."app_user"."weixinid" IS 'å¾®ä¿¡openid';
+COMMENT ON COLUMN "public"."app_user"."loginname" IS 'ç™»å½•å';
+COMMENT ON COLUMN "public"."app_user"."password" IS 'å¯†ç ';
+COMMENT ON COLUMN "public"."app_user"."imgeurl" IS 'å¤´åƒå›¾ç‰‡';
+COMMENT ON COLUMN "public"."app_user"."nickname" IS 'æ˜µç§°';
+COMMENT ON COLUMN "public"."app_user"."truename" IS 'å§“å';
+COMMENT ON COLUMN "public"."app_user"."phone" IS 'ç”µè¯';
+COMMENT ON COLUMN "public"."app_user"."sex" IS 'æ€§åˆ«';
+COMMENT ON COLUMN "public"."app_user"."states" IS 'çŠ¶æ€ï¼ˆé”å®š æ­£å¸¸ å…³é—­ï¼‰';
+COMMENT ON COLUMN "public"."app_user"."isonline" IS 'çŠ¶æ€ï¼ˆ1åœ¨çº¿ 0 ä¸‹çº¿ ï¼‰';
+COMMENT ON COLUMN "public"."app_user"."createtime" IS 'æ·»åŠ æ—¶é—´';
+
+-- ----------------------------
+-- Table structure for area
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."area";
+CREATE TABLE "public"."area" (
+"id" int4 DEFAULT nextval('area_id_seq'::regclass) NOT NULL,
+"describe" varchar(32) COLLATE "default",
+"createtime" timestamp(6),
+"creator_id" varchar(36) COLLATE "default",
+"mac" varchar(36) COLLATE "default"
+)
+WITH (OIDS=FALSE)
+
+;
+COMMENT ON TABLE "public"."area" IS 'area  åœ°åŒºï¼ˆå®¶ï¼‰';
+COMMENT ON COLUMN "public"."area"."id" IS 'ä¸»é”®';
+COMMENT ON COLUMN "public"."area"."describe" IS 'æè¿°';
+COMMENT ON COLUMN "public"."area"."createtime" IS 'æ·»åŠ æ—¶é—´';
+COMMENT ON COLUMN "public"."area"."creator_id" IS 'åˆ›é”®è€…id';
+COMMENT ON COLUMN "public"."area"."mac" IS 'wifimacåœ°å€';
+
+-- ----------------------------
+-- Table structure for device
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."device";
+CREATE TABLE "public"."device" (
+"mac" varchar(36) COLLATE "default" NOT NULL,
+"chipid" varchar(36) COLLATE "default",
+"sn" varchar(36) COLLATE "default",
+"createtime" timestamp(6),
+"servercode" int2,
+"isonline" int2,
+"online_time" timestamp(6)
+)
+WITH (OIDS=FALSE)
+
+;
+COMMENT ON TABLE "public"."device" IS 'device è®¾å¤‡';
+COMMENT ON COLUMN "public"."device"."mac" IS 'macåœ°å€(ä¸»å¥)';
+COMMENT ON COLUMN "public"."device"."chipid" IS 'èŠ¯ç‰‡id';
+COMMENT ON COLUMN "public"."device"."sn" IS 'snå·ç ';
+COMMENT ON COLUMN "public"."device"."createtime" IS 'æ·»åŠ æ—¶é—´';
+
+-- ----------------------------
+-- Table structure for device_attention
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."device_attention";
+CREATE TABLE "public"."device_attention" (
+"id" int4 DEFAULT nextval('device_attention_id_seq'::regclass) NOT NULL,
+"mac" varchar(36) COLLATE "default",
+"userid" varchar(38) COLLATE "default",
+"area_id" int4,
+"createtime" timestamp(6),
+"keyid" int4,
+"key" varchar(36) COLLATE "default",
+"from_uid" varchar(38) COLLATE "default"
+)
+WITH (OIDS=FALSE)
+
+;
+COMMENT ON TABLE "public"."device_attention" IS 'device_attention ç”¨æˆ·å’Œè®¾å¤‡å…³æ³¨å…³è”ï¼ˆå¤šå¯¹å¤šï¼‰';
+COMMENT ON COLUMN "public"."device_attention"."id" IS 'ä¸»é”®';
+COMMENT ON COLUMN "public"."device_attention"."mac" IS 'macåœ°å€';
+COMMENT ON COLUMN "public"."device_attention"."userid" IS 'ç”¨æˆ·id';
+COMMENT ON COLUMN "public"."device_attention"."area_id" IS '(å¤§åŒº)å®¶id';
+COMMENT ON COLUMN "public"."device_attention"."createtime" IS 'æ·»åŠ æ—¶é—´';
+COMMENT ON COLUMN "public"."device_attention"."keyid" IS 'keyid';
+COMMENT ON COLUMN "public"."device_attention"."key" IS 'key';
+COMMENT ON COLUMN "public"."device_attention"."from_uid" IS 'åˆ†äº«è€…id';
+
+-- ----------------------------
+-- Table structure for device_info
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."device_info";
+CREATE TABLE "public"."device_info" (
+"mac" varchar(36) COLLATE "default" NOT NULL,
+"name" varchar(32) COLLATE "default",
+"guest_key" varchar(36) COLLATE "default",
+"com_key" varchar(36) COLLATE "default",
+"ad_key" varchar(36) COLLATE "default",
+"createtime" timestamp(6),
+"wifimac" varchar(36) COLLATE "default",
+"aids" varchar(254) COLLATE "default",
+"dev_type" int2
+)
+WITH (OIDS=FALSE)
+
+;
+COMMENT ON TABLE "public"."device_info" IS 'device_info è®¾å¤‡è¯¦æƒ…';
+COMMENT ON COLUMN "public"."device_info"."mac" IS 'macåœ°å€(ä¸»å¥)';
+COMMENT ON COLUMN "public"."device_info"."name" IS 'åç§°';
+COMMENT ON COLUMN "public"."device_info"."guest_key" IS 'ä½“éªŒå¯†ç ';
+COMMENT ON COLUMN "public"."device_info"."com_key" IS 'ä¸€èˆ¬å¯†ç ';
+COMMENT ON COLUMN "public"."device_info"."ad_key" IS 'ç®¡ç†å‘˜å¯†ç ';
+COMMENT ON COLUMN "public"."device_info"."createtime" IS 'æ·»åŠ æ—¶é—´';
+COMMENT ON COLUMN "public"."device_info"."aids" IS 'è®¾å¤‡å±æ€§AID(å¤šä¸ª, å·éš”å¼€ )';
+COMMENT ON COLUMN "public"."device_info"."dev_type" IS 'è®¾å¤‡ç±»å‹';
+
+-- ----------------------------
+-- Table structure for device_port
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."device_port";
+CREATE TABLE "public"."device_port" (
+"id" int4 DEFAULT nextval('device_port_id_seq'::regclass) NOT NULL,
+"mac" varchar(36) COLLATE "default",
+"port" int4,
+"portname" varchar(32) COLLATE "default",
+"aids" varchar(254) COLLATE "default",
+"aid_dev_type" int4,
+"dev_modelid" int4
+)
+WITH (OIDS=FALSE)
+
+;
+COMMENT ON TABLE "public"."device_port" IS 'device_port( ç«¯å£è®¾å¤‡)';
+COMMENT ON COLUMN "public"."device_port"."id" IS 'ä¸»é”®';
+COMMENT ON COLUMN "public"."device_port"."mac" IS 'è®¾å¤‡id';
+COMMENT ON COLUMN "public"."device_port"."port" IS 'ç«¯å£';
+COMMENT ON COLUMN "public"."device_port"."portname" IS 'åç§°';
+COMMENT ON COLUMN "public"."device_port"."aids" IS 'AID(å¤šä¸ª, å·éš”å¼€ )';
+COMMENT ON COLUMN "public"."device_port"."aid_dev_type" IS 'è®¾å¤‡ç±»å‹';
+COMMENT ON COLUMN "public"."device_port"."dev_modelid" IS 'å‹å·id';
+
+-- ----------------------------
+-- Table structure for device_port_attention
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."device_port_attention";
+CREATE TABLE "public"."device_port_attention" (
+"id" int4 DEFAULT nextval('device_port_attention_id_seq'::regclass) NOT NULL,
+"mac" varchar(36) COLLATE "default",
+"device_port_id" int8,
+"device_attention_id" int8,
+"userid" varchar(38) COLLATE "default",
+"portname" varchar(32) COLLATE "default",
+"createtime" timestamp(6),
+"region_id" int4
+)
+WITH (OIDS=FALSE)
+
+;
+COMMENT ON TABLE "public"."device_port_attention" IS 'device_port_attention ç”¨æˆ·å’Œç«¯å£è®¾å¤‡å…³è”ï¼ˆå¤šå¯¹å¤šï¼‰';
+COMMENT ON COLUMN "public"."device_port_attention"."id" IS 'ä¸»é”®';
+COMMENT ON COLUMN "public"."device_port_attention"."mac" IS 'è®¾å¤‡id';
+COMMENT ON COLUMN "public"."device_port_attention"."device_port_id" IS 'ç«¯å£id';
+COMMENT ON COLUMN "public"."device_port_attention"."device_attention_id" IS 'ç»‘å®šå…³è”id';
+COMMENT ON COLUMN "public"."device_port_attention"."userid" IS 'ç”¨æˆ·id';
+COMMENT ON COLUMN "public"."device_port_attention"."portname" IS 'åç§°';
+COMMENT ON COLUMN "public"."device_port_attention"."createtime" IS 'æ·»åŠ æ—¶é—´';
+COMMENT ON COLUMN "public"."device_port_attention"."region_id" IS 'åŒºåŸŸid';
+
+-- ----------------------------
+-- Table structure for device_port_value
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."device_port_value";
+CREATE TABLE "public"."device_port_value" (
+"id" int8 DEFAULT nextval('device_port_id_seq'::regclass) NOT NULL,
+"mac" varchar(36) COLLATE "default",
+"port" int4,
+"aid" int4,
+"values" varchar(2048) COLLATE "default",
+"createtime" timestamp(6),
+"updatetime" timestamp(6)
+)
+WITH (OIDS=FALSE)
+
+;
+COMMENT ON COLUMN "public"."device_port_value"."id" IS 'ä¸»é”®';
+COMMENT ON COLUMN "public"."device_port_value"."mac" IS 'è®¾å¤‡id';
+COMMENT ON COLUMN "public"."device_port_value"."port" IS 'ç«¯å£';
+COMMENT ON COLUMN "public"."device_port_value"."createtime" IS 'æ·»åŠ æ—¶é—´';
+COMMENT ON COLUMN "public"."device_port_value"."updatetime" IS 'ä¿®æ”¹æ—¶é—´';
+
+-- ----------------------------
+-- Table structure for region
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."region";
+CREATE TABLE "public"."region" (
+"id" int4 DEFAULT nextval('region_id_seq'::regclass) NOT NULL,
+"describe" varchar(32) COLLATE "default",
+"area_id" int4,
+"createtime" timestamp(6),
+"creator_id" varchar(36) COLLATE "default"
+)
+WITH (OIDS=FALSE)
+
+;
+COMMENT ON TABLE "public"."region" IS 'region åŒºåŸŸï¼ˆæˆ¿é—´ï¼‰';
+COMMENT ON COLUMN "public"."region"."id" IS 'ä¸»é”®';
+COMMENT ON COLUMN "public"."region"."describe" IS 'æè¿°';
+COMMENT ON COLUMN "public"."region"."area_id" IS '(å¤§åŒº)å®¶id';
+COMMENT ON COLUMN "public"."region"."createtime" IS 'æ·»åŠ æ—¶é—´';
+COMMENT ON COLUMN "public"."region"."creator_id" IS 'åˆ›é”®è€…id';
+
+-- ----------------------------
+-- Table structure for scene
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."scene";
+CREATE TABLE "public"."scene" (
+"id" varchar(38) COLLATE "default" NOT NULL,
+"describe" varchar(40) COLLATE "default",
+"mac" varchar(36) COLLATE "default",
+"store_mac" varchar(500) COLLATE "default",
+"area_id" int4,
+"data" text COLLATE "default",
+"file_name" varchar(254) COLLATE "default",
+"filedata" text COLLATE "default",
+"status" int4,
+"creator_id" varchar(38) COLLATE "default",
+"userid_set" varchar(500) COLLATE "default",
+"createtime" timestamp(6),
+"typeid" int4
+)
+WITH (OIDS=FALSE)
+
+;
+COMMENT ON TABLE "public"."scene" IS 'æƒ…æ™¯ï¼ˆç¼–ç¨‹ï¼‰';
+COMMENT ON COLUMN "public"."scene"."id" IS 'ä¸»é”®';
+COMMENT ON COLUMN "public"."scene"."describe" IS 'æè¿°åç§°';
+COMMENT ON COLUMN "public"."scene"."mac" IS 'ä¸»å‚¨å­˜çš„è®¾å¤‡ macåœ°å€';
+COMMENT ON COLUMN "public"."scene"."store_mac" IS 'å‚¨å­˜çš„è®¾å¤‡åœ°å€';
+COMMENT ON COLUMN "public"."scene"."area_id" IS 'å®¶id';
+COMMENT ON COLUMN "public"."scene"."data" IS 'æ•°æ®ç»„åˆ';
+COMMENT ON COLUMN "public"."scene"."file_name" IS 'æ–‡ä»¶åç§°';
+COMMENT ON COLUMN "public"."scene"."filedata" IS 'ç”Ÿæˆçš„æ–‡ä»¶æ•°æ®';
+COMMENT ON COLUMN "public"."scene"."status" IS 'çŠ¶æ€';
+COMMENT ON COLUMN "public"."scene"."creator_id" IS 'åˆ›é”®è€…id';
+COMMENT ON COLUMN "public"."scene"."userid_set" IS '(æœ‰æƒé™çš„ç”¨æˆ·id é€—å·éš”å¼€)';
+COMMENT ON COLUMN "public"."scene"."createtime" IS 'æ·»åŠ æ—¶é—´';
+COMMENT ON COLUMN "public"."scene"."typeid" IS 'ç±»å‹ï¼ˆå•è”ã€å¤šè”ã€å®šæ—¶ï¼ŒåŒºé—´å®šæ—¶ï¼‰';
+
+-- ----------------------------
+-- View structure for v_attention_device
+-- ----------------------------
+CREATE OR REPLACE VIEW "public"."v_attention_device" AS 
+ SELECT device_info.name,
+    device_info.ad_key,
+    device_info.createtime,
+    device_attention.userid AS bind_userid,
+    device_attention.keyid,
+    device_attention.key,
+    device_info.guest_key,
+    device_attention.area_id,
+    device_attention.createtime AS adddevtime,
+    area.describe AS homename,
+    device_attention.id AS atten_id,
+    device_info.wifimac,
+    device_info.com_key,
+    device_info.aids,
+    device_attention.mac
+   FROM ((device_attention
+     LEFT JOIN device_info ON (((device_info.mac)::text = (device_attention.mac)::text)))
+     LEFT JOIN area ON (((area.id)::text = (device_attention.area_id)::text)));
+
+-- ----------------------------
+-- View structure for v_device_port
+-- ----------------------------
+CREATE OR REPLACE VIEW "public"."v_device_port" AS 
+ SELECT device_port.id,
+    device_port.port,
+    device_port.portname,
+    device_port.aids,
+    device_port.aid_dev_type,
+    device_port.mac,
+    device_info.ad_key,
+    device_port.dev_modelid
+   FROM (device_port
+     LEFT JOIN device_info ON (((device_port.mac)::text = (device_info.mac)::text)));
+
+-- ----------------------------
+-- View structure for v_device_port_attention
+-- ----------------------------
+CREATE OR REPLACE VIEW "public"."v_device_port_attention" AS 
+ SELECT device_port_attention.device_attention_id,
+    device_port_attention.userid,
+    device_port_attention.region_id,
+    device_port.port,
+    device_port.aids,
+    device_port.aid_dev_type,
+    device_attention.keyid,
+    device_attention.key,
+    device_port_attention.createtime AS add_port_time,
+    device_port_attention.portname,
+    device_attention.area_id,
+    device_port_attention.id AS dp_attenid,
+    device_port_attention.device_port_id,
+    device_port.id,
+    region.describe AS regionname,
+    device_port.dev_modelid,
+    device_port_attention.mac
+   FROM (((device_port_attention
+     LEFT JOIN region ON (((region.id)::text = (device_port_attention.region_id)::text)))
+     LEFT JOIN device_attention ON (((device_attention.id)::text = (device_port_attention.device_attention_id)::text)))
+     LEFT JOIN device_port ON (((device_port.id)::text = (device_port_attention.device_port_id)::text)));
+
+-- ----------------------------
+-- View structure for v_scene
+-- ----------------------------
+CREATE OR REPLACE VIEW "public"."v_scene" AS 
+ SELECT scene.id,
+    scene.describe,
+    scene.store_mac,
+    scene.area_id,
+    scene.data,
+    scene.file_name,
+    scene.filedata,
+    scene.status,
+    scene.creator_id,
+    scene.userid_set,
+    scene.createtime,
+    scene.typeid,
+    app_user.loginname,
+    app_user.truename,
+    scene.mac
+   FROM (scene
+     LEFT JOIN app_user ON (((scene.creator_id)::text = (app_user.id)::text)));
+
+-- ----------------------------
+-- Alter Sequences Owned By 
+-- ----------------------------
+ALTER SEQUENCE "public"."area_id_seq" OWNED BY "area"."id";
+ALTER SEQUENCE "public"."device_attention_id_seq" OWNED BY "device_attention"."id";
+ALTER SEQUENCE "public"."device_port_attention_id_seq" OWNED BY "device_port_attention"."id";
+ALTER SEQUENCE "public"."device_port_id_seq" OWNED BY "device_port"."id";
+ALTER SEQUENCE "public"."region_id_seq" OWNED BY "region"."id";
+
+-- ----------------------------
+-- Primary Key structure for table app_user
+-- ----------------------------
+ALTER TABLE "public"."app_user" ADD PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table area
+-- ----------------------------
+ALTER TABLE "public"."area" ADD PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Uniques structure for table device
+-- ----------------------------
+ALTER TABLE "public"."device" ADD UNIQUE ("mac");
+
+-- ----------------------------
+-- Primary Key structure for table device
+-- ----------------------------
+ALTER TABLE "public"."device" ADD PRIMARY KEY ("mac");
+
+-- ----------------------------
+-- Primary Key structure for table device_attention
+-- ----------------------------
+ALTER TABLE "public"."device_attention" ADD PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table device_info
+-- ----------------------------
+ALTER TABLE "public"."device_info" ADD PRIMARY KEY ("mac");
+
+-- ----------------------------
+-- Primary Key structure for table device_port
+-- ----------------------------
+ALTER TABLE "public"."device_port" ADD PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table device_port_attention
+-- ----------------------------
+ALTER TABLE "public"."device_port_attention" ADD PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table device_port_value
+-- ----------------------------
+ALTER TABLE "public"."device_port_value" ADD PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table region
+-- ----------------------------
+ALTER TABLE "public"."region" ADD PRIMARY KEY ("id");
+
+-- ----------------------------
+-- Primary Key structure for table scene
+-- ----------------------------
+ALTER TABLE "public"."scene" ADD PRIMARY KEY ("id");

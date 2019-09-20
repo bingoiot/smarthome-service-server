@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 103.45.3.145
-Source Server Version : 80012
-Source Host           : 103.45.3.145:3306
+Source Server         : 金凤服务器
+Source Server Version : 50725
+Source Host           : 47.104.15.44:3306
 Source Database       : jifan_consumer_db
 
 Target Server Type    : MYSQL
-Target Server Version : 80012
+Target Server Version : 50725
 File Encoding         : 65001
 
-Date: 2018-09-22 15:11:21
+Date: 2019-04-25 13:50:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -92,6 +92,7 @@ CREATE TABLE `device_info` (
   `createtime` timestamp NULL DEFAULT NULL COMMENT '添加时间',
   `wifimac` varchar(36) DEFAULT NULL COMMENT '连接的wifi',
   `aids` varchar(500) DEFAULT NULL COMMENT '设备属性AID(多个, 号隔开 )',
+  `dev_type` smallint(6) DEFAULT NULL COMMENT '设备类型',
   PRIMARY KEY (`mac`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='device_info 设备详情';
 
@@ -125,6 +126,21 @@ CREATE TABLE `device_port_attention` (
   `region_id` int(11) DEFAULT NULL COMMENT '区域id',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='device_port_attention 用户和端口设备关联（多对多）';
+
+-- ----------------------------
+-- Table structure for device_port_value
+-- ----------------------------
+DROP TABLE IF EXISTS `device_port_value`;
+CREATE TABLE `device_port_value` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `mac` varchar(36) DEFAULT NULL COMMENT '设备id',
+  `port` int(11) DEFAULT NULL COMMENT '端口',
+  `aid` int(11) DEFAULT NULL,
+  `values` varchar(0) DEFAULT NULL,
+  `createtime` timestamp NULL DEFAULT NULL COMMENT '添加时间',
+  `updatetime` timestamp NULL DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for region
